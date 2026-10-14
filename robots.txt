@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /404.html
 
-Sitemap: https://cbstudioweb.com/sitemap.xml
+Sitemap: https://resuelveinmueble.vercel.app/sitemap.xml
