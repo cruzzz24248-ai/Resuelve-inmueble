@@ -921,36 +921,33 @@ h1 em, h2 em, .it { font-style: italic; color: var(--green-dark); }
 @media (max-width: 640px) { .footer-actions { width: 100%; align-items: stretch; } }
 .opts .opt:last-child:nth-child(odd) { grid-column: 1 / -1; }
 
-/* Hero: las dos palabras clave van en mayúscula, más chicas y espaciadas
-   (versalitas editoriales), alineadas a la base del título.
-   PROBLEMA = blanco con línea punteada (pendiente, abierto)
-   RESOLVERLO = verde con línea sólida que se dibuja (cerrado) */
-.hero .line { padding-bottom: .16em; margin-bottom: -.06em; }
+/* Hero: PROBLEMA = solo contorno (hueco, sin resolver).
+   RESOLVERLO = parte con contorno y se rellena de verde de izquierda a derecha (resuelto). */
 .mark, .fix {
-  position: relative; display: inline-block;
-  font-size: .62em; font-style: normal; font-weight: 500;
-  letter-spacing: .14em; line-height: 1.1;
-  padding-bottom: .22em; margin-inline: .06em .02em;
+  display: inline-block; white-space: nowrap;
+  font-size: .9em; font-style: normal; letter-spacing: .01em;
+  -webkit-text-stroke: 1.5px currentColor;
 }
-.mark { color: #fff; }
-.fix { color: #7fe0b8; }
-.mark::after, .fix::after { content: ""; position: absolute; left: 0; right: .14em; bottom: 0; pointer-events: none; }
-.mark::after {
-  height: 2px;
-  background: repeating-linear-gradient(90deg, rgba(255,255,255,.75) 0 5px, transparent 5px 10px);
-  clip-path: inset(0 100% 0 0);
-  animation: draw 1s var(--ease) 1.1s forwards;
+.mark {
+  color: #fff;
+  -webkit-text-fill-color: transparent;
+  background: linear-gradient(#fff, #fff) no-repeat 100% 0 / 100% 100%;
+  -webkit-background-clip: text; background-clip: text;
+  animation: empty 1.1s var(--ease) 1.2s forwards;
 }
-.fix::after {
-  height: 2px; background: #7fe0b8;
-  transform: scaleX(0); transform-origin: left;
-  animation: grow .9s var(--ease) 1.7s forwards;
+@keyframes empty { to { background-size: 0% 100%; } }
+.fix {
+  color: #7fe0b8;
+  -webkit-text-fill-color: transparent;
+  background: linear-gradient(#7fe0b8, #7fe0b8) no-repeat 0 0 / 0% 100%;
+  -webkit-background-clip: text; background-clip: text;
+  animation: fill 1.3s var(--ease) 1.4s forwards;
 }
-@keyframes draw { to { clip-path: inset(0 0 0 0); } }
-@keyframes grow { to { transform: scaleX(1); } }
-@media (prefers-reduced-motion: reduce) {
-  .mark::after { animation: none; clip-path: none; }
-  .fix::after { animation: none; transform: none; }
+@keyframes fill { to { background-size: 100% 100%; } }
+@media (prefers-reduced-motion: reduce) { .fix { animation: none; background-size: 100% 100%; } .mark { animation: none; background-size: 0% 100%; } }
+@supports not (-webkit-text-stroke: 1px #000) {
+  .mark { color: #fff; -webkit-text-fill-color: currentColor; background: none; animation: none; }
+  .fix { background: none; }
 }
 
 /* Menú móvil: panel de media pantalla */
