@@ -87,20 +87,21 @@ h3 { font-size: 1rem; font-weight: 700; }
 .header-inner { display: flex; align-items: center; justify-content: space-between; height: 100%; overflow: visible; }
 
 .brand { display: inline-flex; align-items: center; }
-.brand-img { 
-  height: 50px;            
-  width: auto; 
-  display: block; 
-  object-fit: contain; 
-  transform: scale(2.3); 
-  transform-origin: left center; 
+/* Logo: tamaño real (sin transform: scale, que es lo que lo deja borroso).
+   Cambiá --logo-h para agrandarlo o achicarlo; se centra solo en el header. */
+.brand-img {
+  --logo-h: 128px;
+  height: var(--logo-h);
+  width: auto;
+  max-width: calc(100vw - 6.5rem);
+  display: block;
+  object-fit: contain;
+  object-position: left center;
+  margin-block: calc((var(--header-h) - var(--logo-h)) / 2);
 }
 
 @media (min-width: 769px) {
-  .brand-img {
-    height: 58px;          
-    transform: scale(2.5);  
-  }
+  .brand-img { --logo-h: 160px; }
 }
 
 .main-nav { display: flex; align-items: center; gap: 1.75rem; font-size: .85rem; }
@@ -307,12 +308,9 @@ h3 { font-size: 1rem; font-weight: 700; }
 }
 
 .footer-brand .brand-img {
-  height: 48px;
-  width: auto;
-  display: block;
-  object-fit: contain;
-  transform: scale(2.2);
-  transform-origin: left center;
+  --logo-h: 130px;
+  height: var(--logo-h);
+  margin-block: calc((52px - var(--logo-h)) / 2);
 }
 
 .footer-desc {
@@ -438,9 +436,7 @@ h3 { font-size: 1rem; font-weight: 700; }
 
   /* ESCALA AGRANDADA PARA EL LOGO EN CELULAR */
   .footer-brand .brand-img {
-    height: 50px;
-    transform: scale(2.2);
-    transform-origin: left center;
+    --logo-h: 112px;
   }
 
   .footer-nav-wrapper {
@@ -925,11 +921,37 @@ h1 em, h2 em, .it { font-style: italic; color: var(--green-dark); }
 @media (max-width: 640px) { .footer-actions { width: 100%; align-items: stretch; } }
 .opts .opt:last-child:nth-child(odd) { grid-column: 1 / -1; }
 
-/* Marcador (resaltado) sobre la palabra PROBLEMA del hero */
-.mark { background: linear-gradient(rgba(127,224,184,.95), rgba(127,224,184,.95)) no-repeat 0 50% / 0% 100%; animation: mk .9s var(--ease) 1.1s forwards, mkc .3s ease 1.5s forwards; padding: .02em .22em; margin-inline: -.22em; border-radius: .12em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
-@keyframes mk { to { background-size: 100% 100%; } }
-@keyframes mkc { to { color: var(--navy); } }
-@media (prefers-reduced-motion: reduce) { .mark { animation: none; background-size: 100% 100%; color: var(--navy); } }
+/* Hero: las dos palabras clave van en mayúscula, más chicas y espaciadas
+   (versalitas editoriales), alineadas a la base del título.
+   PROBLEMA = blanco con línea punteada (pendiente, abierto)
+   RESOLVERLO = verde con línea sólida que se dibuja (cerrado) */
+.hero .line { padding-bottom: .16em; margin-bottom: -.06em; }
+.mark, .fix {
+  position: relative; display: inline-block;
+  font-size: .62em; font-style: normal; font-weight: 500;
+  letter-spacing: .14em; line-height: 1.1;
+  padding-bottom: .22em; margin-inline: .06em .02em;
+}
+.mark { color: #fff; }
+.fix { color: #7fe0b8; }
+.mark::after, .fix::after { content: ""; position: absolute; left: 0; right: .14em; bottom: 0; pointer-events: none; }
+.mark::after {
+  height: 2px;
+  background: repeating-linear-gradient(90deg, rgba(255,255,255,.75) 0 5px, transparent 5px 10px);
+  clip-path: inset(0 100% 0 0);
+  animation: draw 1s var(--ease) 1.1s forwards;
+}
+.fix::after {
+  height: 2px; background: #7fe0b8;
+  transform: scaleX(0); transform-origin: left;
+  animation: grow .9s var(--ease) 1.7s forwards;
+}
+@keyframes draw { to { clip-path: inset(0 0 0 0); } }
+@keyframes grow { to { transform: scaleX(1); } }
+@media (prefers-reduced-motion: reduce) {
+  .mark::after { animation: none; clip-path: none; }
+  .fix::after { animation: none; transform: none; }
+}
 
 /* Menú móvil: panel de media pantalla */
 @media (max-width: 860px) {
