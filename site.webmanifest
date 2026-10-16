@@ -6,5 +6,5 @@
   "display": "browser",
   "background_color": "#0c2233",
   "theme_color": "#0c2233",
-  "icons": [{ "src": "img/logo.png", "sizes": "any", "type": "image/png" }]
+  "icons": [{ "src": "img/icon.png", "sizes": "any", "type": "image/png" }]
 }
