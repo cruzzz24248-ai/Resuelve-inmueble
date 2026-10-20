@@ -391,21 +391,6 @@ h3 { font-size: 1rem; font-weight: 700; }
   font-size: .8rem;
 }
 
-.footer-legal {
-  display: flex;
-  align-items: center;
-  gap: .8rem;
-}
-
-.footer-legal a {
-  color: var(--muted-light);
-  transition: color .2s;
-}
-
-.footer-legal a:hover {
-  color: var(--white);
-}
-
 /* ===== RESPONSIVE PARA EL FOOTER (MÓVIL Y TABLET) ===== */
 @media (max-width: 960px) {
   .footer-top {
@@ -607,14 +592,7 @@ p { text-wrap: pretty; }
   .main-nav.is-open { visibility: visible; opacity: 1; transform: none; }
 }
 
-/* Páginas legales y 404 */
-.legal { padding-block: 3rem var(--section-y); max-width: 760px; }
-.legal h1 { font-size: clamp(2rem, 5vw, 2.8rem); margin-bottom: .5rem; }
-.legal h2 { font-size: 1.35rem; margin-top: 2.2rem; max-width: none; }
-.legal p, .legal li { margin-top: .75rem; color: var(--muted); }
-.legal ul { list-style: disc; padding-left: 1.25rem; }
-.legal a { color: var(--green-dark); text-decoration: underline; }
-.ph { background: #fff3b0; padding: 0 .25rem; border-radius: 3px; color: var(--ink); }
+/* Página 404 */
 .notfound { min-height: 70vh; display: grid; place-content: center; justify-items: start; gap: 1.2rem; }
 
 /* Movimiento reducido */

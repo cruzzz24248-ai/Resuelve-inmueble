@@ -3,7 +3,8 @@
    ========================================================= */
 
 const CONFIG = {
-  whatsappNumber: "5491112345678", // Reemplazar por el número real
+  // WhatsApp (formato internacional, sin + ni espacios)
+  whatsappNumber: "5493516578580",
   defaultMessage: "Hola, quiero consultar por la situación de mi propiedad.",
 };
 
@@ -21,7 +22,7 @@ function buildFormMessage(data) {
     `Nombre: ${data.get("nombre").trim()}`,
     `Teléfono: ${data.get("telefono").trim()}`,
     `Situación: ${data.get("situacion")}`,
-    `Provincia: ${data.get("provincia").trim()}`,
+    `Localidad (Córdoba): ${data.get("localidad").trim()}`,
   ];
   const detalle = data.get("mensaje").trim();
   if (detalle) lines.push(`Detalle: ${detalle}`);
@@ -140,7 +141,7 @@ function initContactForm() {
   const next = $("[data-next]", form);
   const send = $("[data-send]", form);
   const phone = form.elements.telefono;
-  const messages = ["Elegí la opción que más se parece a tu caso.", "Contanos en qué provincia está el inmueble.", "Completá tu nombre y un teléfono válido."];
+  const messages = ["Elegí la opción que más se parece a tu caso.", "Contanos en qué localidad de Córdoba está el inmueble.", "Completá tu nombre y un teléfono válido."];
   let cur = 0;
 
   form.classList.add("is-js");
