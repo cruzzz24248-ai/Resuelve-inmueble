@@ -252,6 +252,24 @@ function initCardSpotlight() {
   });
 }
 
+/* Video del hero: se carga recién cuando la página terminó y solo si la conexión y las preferencias lo permiten */
+function initHeroVideo() {
+  const video = $(".hero-video");
+  if (!video || reduceMotion) return;
+  const conn = navigator.connection;
+  if (conn && (conn.saveData || /(^|-)2g$/.test(conn.effectiveType || ""))) return;
+
+  const start = () => {
+    video.src = window.matchMedia("(max-width: 768px)").matches ? video.dataset.srcMb : video.dataset.src;
+    video.play().then(() => video.classList.add("is-playing")).catch(() => {});
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(([e]) => (e.isIntersecting ? video.play().catch(() => {}) : video.pause()), { threshold: 0.05 }).observe(video);
+    }
+  };
+  if (document.readyState === "complete") setTimeout(start, 300);
+  else window.addEventListener("load", () => setTimeout(start, 300), { once: true });
+}
+
 function initFooterYear() {
   const year = $("#year");
   if (year) year.textContent = new Date().getFullYear();
@@ -266,4 +284,5 @@ document.addEventListener("DOMContentLoaded", () => {
   initScrollReveal();
   initCardSpotlight();
   initFooterYear();
+  initHeroVideo();
 });
