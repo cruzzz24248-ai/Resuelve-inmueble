@@ -257,7 +257,90 @@ function initFooterYear() {
   if (year) year.textContent = new Date().getFullYear();
 }
 
+
+/* Evaluá tu caso: orientación por situación + checklist que arma el mensaje de WhatsApp.
+   El contenido (textos y listas) vive en evaluar-contenido.js y lo define el equipo legal.
+   Sin ese archivo, la sección queda oculta. */
+function initEval() {
+  const root = $("[data-eval]");
+  const EVAL_DATA = window.EVAL_DATA;
+  if (!root || !EVAL_DATA) return;
+  const tabs = $$(".eval-tab", root);
+  const $t = (n) => $(`[data-ev="${n}"]`, root);
+  const list = $t("docs"), bar = $t("bar"), count = $t("count");
+  const page = $("[data-ev-page]", root), send = $("[data-ev-send]", root);
+  let key = null;
+
+  const refresh = () => {
+    const boxes = $$("input", list);
+    const n = boxes.filter((b) => b.checked).length;
+    bar.style.width = `${boxes.length ? (n / boxes.length) * 100 : 0}%`;
+    count.textContent = `${n} de ${boxes.length} reunidos`;
+  };
+
+  const render = (k) => {
+    const d = EVAL_DATA[k];
+    if (!d) return;
+    key = k;
+    tabs.forEach((t) => t.setAttribute("aria-pressed", String(t.dataset.key === k)));
+    $t("title").textContent = d.title;
+    $t("desc").textContent = d.desc;
+    list.innerHTML = "";
+    d.docs.forEach((txt) => {
+      const li = document.createElement("li");
+      const label = document.createElement("label");
+      label.className = "doc";
+      label.innerHTML = '<input type="checkbox"><span class="box"></span><span class="txt"></span>';
+      $(".txt", label).textContent = txt;
+      $("input", label).addEventListener("change", refresh);
+      li.appendChild(label);
+      list.appendChild(li);
+    });
+    page.setAttribute("href", d.page);
+    refresh();
+  };
+
+  tabs.forEach((t) => t.addEventListener("click", () => render(t.dataset.key)));
+
+  send.addEventListener("click", () => {
+    const d = EVAL_DATA[key];
+    const have = [], miss = [];
+    $$("label.doc", list).forEach((l) => ($("input", l).checked ? have : miss).push($(".txt", l).textContent));
+    const lines = ["Hola, quiero consultar por un inmueble.", `Situación: ${d.title}`];
+    lines.push(have.length ? "Ya tengo reunido:\n" + have.map((x) => `- ${x}`).join("\n") : "Todavía no reuní documentación.");
+    if (have.length && miss.length) lines.push("Me falta:\n" + miss.map((x) => `- ${x}`).join("\n"));
+    window.dataLayer?.push({ event: "evaluar_whatsapp", situacion: d.title });
+    const url = buildWhatsAppUrl(lines.join("\n"));
+    if (!window.open(url, "_blank", "noopener")) window.location.href = url;
+  });
+
+  const q = new URLSearchParams(window.location.search).get("situacion");
+  const byName = Object.keys(EVAL_DATA).find((k) => EVAL_DATA[k].title.toLowerCase() === (q || "").toLowerCase());
+  render(byName || "derechos");
+}
+
+/* Pantalla de entrada: candado que se abre y deja ver el logo. Una vez por sesión; con ?intro se fuerza */
+function initIntro() {
+  const intro = $("#intro");
+  if (!intro) return;
+  const root = document.documentElement;
+  if (root.classList.contains("no-intro")) { intro.remove(); return; }
+  let closed = false;
+  const done = () => {
+    if (closed) return;
+    closed = true;
+    try { sessionStorage.setItem("resuelve-intro", "1"); } catch (e) {}
+    root.classList.remove("intro-on");
+    intro.remove();
+  };
+  intro.addEventListener("animationend", (e) => { if (e.target === intro && e.animationName === "inout") done(); });
+  intro.addEventListener("click", () => intro.classList.add("skip"));
+  setTimeout(done, 5500);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+  initIntro();
+  initEval();
   initMobileMenu();
   initScrollEffects();
   initScrollSpy();

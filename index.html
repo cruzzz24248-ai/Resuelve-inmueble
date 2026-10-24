@@ -24,13 +24,14 @@
   <meta name="description" content="Compra directa de propiedades con derechos hereditarios, sucesiones, indivisiones, embargos o usucapiones. Consulta confidencial por WhatsApp.">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
   <meta name="author" content="Resuelve Inmueble">
+  <script>(function(){var d=document.documentElement;try{var f=/[?&]intro/.test(location.search),v=sessionStorage.getItem("resuelve-intro");d.classList.add((v&&!f)||matchMedia("(prefers-reduced-motion:reduce)").matches?"no-intro":"intro-on")}catch(e){d.classList.add("intro-on")}})()</script>
   <meta name="theme-color" content="#0c2233">
   <meta name="format-detection" content="telephone=no">
   <meta name="geo.region" content="AR-X">
   <link rel="canonical" href="https://resuelveinmueble.vercel.app/">
 
-  <link rel="icon" href="img/icono.png" type="image/png">
-  <link rel="apple-touch-icon" href="img/icono.png">
+  <link rel="icon" href="favicon.ico" sizes="48x48"><link rel="icon" href="img/icono.png" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -65,6 +66,34 @@
   <!-- ===== FIN: 1. HEAD ===== -->
 </head>
 <body>
+<div id="intro" aria-hidden="true">
+  <div class="in-c">
+    <div class="in-stage">
+      <div class="in-aura"></div>
+      <svg class="in-city" viewBox="0 0 600 260" role="presentation" focusable="false">
+        <defs>
+          <linearGradient id="inSp" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd27d" stop-opacity=".85"/><stop offset="1" stop-color="#ffd27d" stop-opacity="0"/></linearGradient>
+          <filter id="inBl" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="8"/></filter>
+        </defs>
+        <g fill="#fff"><circle class="st" style="--d:0.00s" cx="60" cy="30" r="1.2"/><circle class="st" style="--d:0.37s" cx="150" cy="14" r="1.2"/><circle class="st" style="--d:0.74s" cx="250" cy="42" r="1.2"/><circle class="st" style="--d:1.11s" cx="420" cy="24" r="1.2"/><circle class="st" style="--d:1.48s" cx="520" cy="52" r="1.2"/><circle class="st" style="--d:1.85s" cx="566" cy="18" r="1.2"/><circle class="st" style="--d:2.22s" cx="330" cy="10" r="1.2"/></g>
+        <g fill="#0e2638"><rect x="18" y="176" width="36" height="44"/><rect x="58" y="158" width="28" height="62"/><rect x="512" y="168" width="34" height="52"/><rect x="548" y="148" width="30" height="72"/></g>
+        <g fill="#10293c" stroke="#fff" stroke-opacity=".07"><path d="M96 220V174L140 142L184 174V220Z"/><path d="M416 220V178L466 146L516 178V220Z"/></g>
+        <g fill="#15324a"><rect x="122" y="178" width="16" height="18" rx="1"/><rect x="142" y="178" width="16" height="18" rx="1"/><rect x="448" y="182" width="16" height="18" rx="1"/><rect x="468" y="182" width="16" height="18" rx="1"/></g>
+        <path class="in-spill" d="M286 220H314L362 258H238Z" fill="url(#inSp)"/>
+        <rect x="336" y="70" width="18" height="44" fill="#143349"/>
+        <path d="M212 128L300 56L388 128Z" fill="#163a54" stroke="#fff" stroke-opacity=".1"/>
+        <rect x="230" y="124" width="140" height="96" fill="#123049" stroke="#fff" stroke-opacity=".1"/>
+        <g filter="url(#inBl)"><rect class="wg" style="--d:0.55s" x="284" y="79" width="32" height="36" rx="15"/><rect class="wg" style="--d:0.85s" x="241" y="143" width="40" height="44" rx="6"/><rect class="wg" style="--d:1.1s" x="319" y="143" width="40" height="44" rx="6"/><rect class="wg" style="--d:1.4s" x="281" y="161" width="38" height="64" rx="6"/></g>
+        <g><rect class="wf" style="--d:0.55s" x="289" y="84" width="22" height="26" rx="11"/><rect class="wf" style="--d:0.85s" x="246" y="148" width="30" height="34" rx="2"/><rect class="wf" style="--d:1.1s" x="324" y="148" width="30" height="34" rx="2"/><rect class="wf" style="--d:1.4s" x="286" y="166" width="28" height="54" rx="2"/></g>
+        <line x1="0" y1="220" x2="600" y2="220" stroke="#fff" stroke-opacity=".16"/>
+      </svg>
+    </div>
+  </div>
+  <div class="in-fg">
+    <div class="in-brand"><img src="img/logo.png" alt="" width="440" height="440"></div>
+    <p class="in-tag">Soluciones patrimoniales</p>
+  </div>
+</div>
 <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
 <!-- ===== INICIO: 2. ICONOS (SVG SPRITE) ===== -->
@@ -143,6 +172,47 @@
   </div>
 </section>
 <!-- ===== FIN: 4. HERO ===== -->
+<!-- ===== INICIO: 4b. EVALUÁ TU CASO ===== -->
+<!-- Oculta hasta que el equipo legal apruebe el contenido (ver evaluar-contenido.js) -->
+<section class="section eval" id="evaluar" aria-labelledby="eval-title" hidden>
+  <div class="container">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">Orientación inicial</p>
+        <h2 id="eval-title">Evaluá tu caso en <em>2 minutos.</em></h2>
+      </div>
+      <p class="sec-lead">Elegí tu situación y mirá qué documentación conviene reunir y cuáles son los primeros pasos. Sin compromiso y sin dejar tus datos.</p>
+    </div>
+    <div class="eval-box" data-eval>
+      <div class="eval-tabs" role="group" aria-label="Elegí tu situación"><button type="button" class="eval-tab" data-key="derechos" aria-pressed="false"><svg class="icon"><use href="#i-derechos"/></svg><span>Derechos hereditarios</span></button><button type="button" class="eval-tab" data-key="sucesiones" aria-pressed="false"><svg class="icon"><use href="#i-sucesiones"/></svg><span>Sucesiones</span></button><button type="button" class="eval-tab" data-key="indivisiones" aria-pressed="false"><svg class="icon"><use href="#i-indivisiones"/></svg><span>Indivisiones</span></button><button type="button" class="eval-tab" data-key="embargos" aria-pressed="false"><svg class="icon"><use href="#i-embargos"/></svg><span>Embargos</span></button><button type="button" class="eval-tab" data-key="usucapiones" aria-pressed="false"><svg class="icon"><use href="#i-usucapiones"/></svg><span>Usucapiones</span></button><button type="button" class="eval-tab" data-key="otro" aria-pressed="false"><svg class="icon"><use href="#i-otros"/></svg><span>Otro caso</span></button></div>
+      <div class="eval-panel" aria-live="polite">
+        <div class="eval-top"><h3 data-ev="title"></h3><p data-ev="desc"></p></div>
+        <div class="eval-cols">
+          <div class="eval-docs-wrap">
+            <p class="eval-h">Documentación que conviene reunir</p>
+            <ul class="eval-docs" data-ev="docs"></ul>
+            <div class="eval-meter" aria-hidden="true"><span class="m-bar"><i data-ev="bar"></i></span><span class="m-txt" data-ev="count"></span></div>
+            <p class="eval-hint">Tildá lo que ya tenés: lo incluimos en tu mensaje. Si no tenés nada, no pasa nada: te guiamos.</p>
+          </div>
+          <div>
+            <p class="eval-h">Primeros pasos</p>
+            <ol class="eval-steps">
+              <li><b>Nos contás tu situación</b><span>Por WhatsApp, de forma confidencial.</span></li>
+              <li><b>Analizamos tu caso</b><span>Te decimos si podemos avanzar con la compra.</span></li>
+              <li><b>Recibís una propuesta</b><span>Si corresponde, con sus condiciones para que decidas.</span></li>
+            </ol>
+            <p class="eval-note">Los plazos dependen de cada caso: tras el análisis te informamos tiempos estimados.</p>
+          </div>
+        </div>
+        <div class="eval-cta">
+          <button type="button" class="btn btn-primary" data-ev-send><svg class="icon"><use href="#i-whatsapp"/></svg> Enviar mi caso por WhatsApp</button>
+          <a class="btn-text" data-ev-page href="#servicios">Ver más sobre esta situación</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ===== FIN: 4b. EVALUÁ TU CASO ===== -->
 
 <!-- ===== INICIO: 5. SERVICIOS ===== -->
 <section class="section" id="servicios">
