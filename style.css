@@ -977,7 +977,7 @@ h1 em, h2 em, .it { font-style: italic; color: var(--green-dark); }
 html.intro-on { overflow: hidden; }
 .intro-on .hero [data-in], .intro-on .hero .line > span, .intro-on .hero-bg img { animation-play-state: paused !important; }
 #intro { --W: min(440px, 82vw); --sw: min(560px, 92vw); --sh: calc(var(--sw) * .4333); --lh: calc(var(--W) * .1934); position: fixed; inset: 0; z-index: 300; display: grid; place-items: center; overflow: hidden; background: var(--navy); color: #fff; animation: inout .75s cubic-bezier(.7,0,.2,1) 3s both; }
-#intro.skip { animation: inout .45s cubic-bezier(.7,0,.2,1) both; }
+#intro.skip { animation: inout2 .45s cubic-bezier(.7,0,.2,1) both; }
 .in-c { grid-area: 1 / 1; position: relative; z-index: 1; }
 .in-stage { position: relative; width: var(--sw); opacity: 0; animation: inop .6s ease .1s forwards, inup .7s cubic-bezier(.2,.8,.2,1) 1.75s forwards; }
 .in-city { position: relative; display: block; width: 100%; height: auto; overflow: visible; }
@@ -992,6 +992,7 @@ html.intro-on { overflow: hidden; }
 .in-brand img { display: block; width: var(--W); height: auto; }
 .in-tag { translate: 0 calc((var(--sh) + 28px) / 2 + var(--lh) / 2 + 24px); opacity: 0; font-size: .72rem; font-weight: 500; letter-spacing: .28em; text-transform: uppercase; color: rgba(255,255,255,.6); animation: inop .7s ease 2.3s forwards; }
 @keyframes inout { to { transform: translateY(-100%); } }
+@keyframes inout2 { to { transform: translateY(-100%); } }
 @keyframes inop { to { opacity: 1; } }
 @keyframes inup { to { transform: translateY(calc((28px + var(--lh)) / -2)); } }
 @keyframes inwin { to { fill: #ffd27d; } }

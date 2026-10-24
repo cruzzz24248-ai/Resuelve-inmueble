@@ -333,8 +333,9 @@ function initIntro() {
     root.classList.remove("intro-on");
     intro.remove();
   };
-  intro.addEventListener("animationend", (e) => { if (e.target === intro && e.animationName === "inout") done(); });
+  intro.addEventListener("animationend", (e) => { if (e.target === intro && /^inout/.test(e.animationName)) done(); });
   intro.addEventListener("click", () => intro.classList.add("skip"));
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") intro.classList.add("skip"); });
   setTimeout(done, 5500);
 }
 
