@@ -259,8 +259,7 @@ function initFooterYear() {
 
 
 /* Evaluá tu caso: orientación por situación + checklist que arma el mensaje de WhatsApp.
-   El contenido (textos y listas) vive en evaluar-contenido.js y lo define el equipo legal.
-   Sin ese archivo, la sección queda oculta. */
+   Se activa solo si existe window.EVAL_DATA; si no, la sección queda oculta. */
 function initEval() {
   const root = $("[data-eval]");
   const EVAL_DATA = window.EVAL_DATA;
@@ -319,7 +318,7 @@ function initEval() {
   render(byName || "derechos");
 }
 
-/* Pantalla de entrada: candado que se abre y deja ver el logo. Una vez por sesión; con ?intro se fuerza */
+/* Pantalla de entrada: la casita enciende las luces y revela el logo. Una vez por sesión; con ?intro se fuerza */
 function initIntro() {
   const intro = $("#intro");
   if (!intro) return;
@@ -336,7 +335,7 @@ function initIntro() {
   intro.addEventListener("animationend", (e) => { if (e.target === intro && /^inout/.test(e.animationName)) done(); });
   intro.addEventListener("click", () => intro.classList.add("skip"));
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") intro.classList.add("skip"); });
-  setTimeout(done, 5500);
+  setTimeout(done, 4200);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
