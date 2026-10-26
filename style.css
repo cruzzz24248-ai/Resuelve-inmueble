@@ -981,7 +981,6 @@ html.intro-on { overflow: hidden; }
 .in-stage { position: relative; width: var(--sw); opacity: 0; animation: inop .5s ease .1s forwards, inup .6s cubic-bezier(.2,.8,.2,1) 1.6s forwards; }
 .in-city { position: relative; display: block; width: 100%; height: auto; overflow: visible; }
 .in-aura { position: absolute; left: 50%; top: 50%; width: 150%; aspect-ratio: 1; translate: -50% -50%; background: radial-gradient(closest-side, rgba(255,190,100,.34), rgba(255,190,100,.12) 45%, transparent 70%); opacity: 0; transform: scale(.35); will-change: transform, opacity; animation: inaura 1.2s ease-out 1s forwards; pointer-events: none; }
-.in-city .in-stars { opacity: 0; animation: inop 1s ease .3s forwards; }
 .in-city .wf { animation: inwin .45s ease var(--d) forwards; }
 .in-city .wg { opacity: 0; animation: inop .5s ease var(--d) forwards; }
 .in-city .in-spill { opacity: 0; animation: inop .7s ease 1.2s forwards; }
