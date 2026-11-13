@@ -461,7 +461,7 @@ h3 { font-size: 1rem; font-weight: 700; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }
 
-@media (max-width: 860px) {
+@media (max-width: 1100px) {
   .menu-toggle { display: flex; }
   
   .main-nav { 
@@ -587,7 +587,7 @@ p { text-wrap: pretty; }
 @keyframes pulso { from { transform: scale(1); opacity: .7; } to { transform: scale(1.7); opacity: 0; } }
 
 /* Menú móvil con transición real */
-@media (max-width: 860px) {
+@media (max-width: 1100px) {
   .main-nav { display: flex; visibility: hidden; opacity: 0; transform: translateY(-10px); transition: opacity .25s, transform .25s var(--ease), visibility .25s; }
   .main-nav.is-open { visibility: visible; opacity: 1; transform: none; }
 }
@@ -692,7 +692,7 @@ h1 em, h2 em, .it { font-style: italic; color: var(--green-dark); }
 .site-header::before { content: ""; position: absolute; inset: 0; z-index: -1; -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); opacity: 0; transition: opacity .3s; }
 .site-header.is-scrolled::before { opacity: 1; }
 .main-nav { font-size: .95rem; }
-@media (max-width: 860px) {
+@media (max-width: 1100px) {
   .main-nav { position: fixed; top: var(--header-h); left: 0; right: 0; bottom: 0; height: calc(100dvh - var(--header-h)); display: flex; flex-direction: column; align-items: stretch; justify-content: flex-start; gap: 0; padding: 1.5rem 1.25rem 2.5rem; background: var(--navy); overflow-y: auto; visibility: hidden; opacity: 0; transform: none; transition: opacity .3s, visibility .3s; }
   .main-nav.is-open { visibility: visible; opacity: 1; }
   .main-nav a:not(.btn) { width: 100%; justify-content: flex-start; padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,.1); font-family: var(--font-display); font-size: 2rem; letter-spacing: -.02em; }
@@ -912,14 +912,14 @@ h1 em, h2 em, .it { font-style: italic; color: var(--green-dark); }
 @media (prefers-reduced-motion: reduce) { .mark::after { animation: none; transform: none; } }
 
 /* Menú móvil: panel de media pantalla */
-@media (max-width: 860px) {
+@media (max-width: 1100px) {
   .main-nav { bottom: auto; height: auto; max-height: calc(100dvh - var(--header-h)); left: .75rem; right: .75rem; padding: .4rem 1.1rem 1.2rem; border: 1px solid rgba(255,255,255,.12); border-top: 0; border-radius: 0 0 18px 18px; box-shadow: 0 24px 40px rgba(0,0,0,.4); }
   .main-nav a:not(.btn) { font-size: 1.35rem; padding: .8rem 0; }
   .main-nav .btn { margin-top: 1.1rem; min-height: 52px; }
 }
 
 /* Menú móvil: mismo color que la barra superior, sin cortes */
-@media (max-width: 860px) {
+@media (max-width: 1100px) {
   body.menu-open .site-header { background: var(--navy); }
   .main-nav { background: var(--navy); left: 0; right: 0; border: 0; border-radius: 0; }
 }

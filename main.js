@@ -45,7 +45,7 @@ function initMobileMenu() {
   toggle.addEventListener("click", () => setOpen(!nav.classList.contains("is-open")));
   $$("a", nav).forEach((link) => link.addEventListener("click", () => setOpen(false)));
   document.addEventListener("keydown", (e) => e.key === "Escape" && setOpen(false));
-  window.addEventListener("resize", () => window.innerWidth > 860 && setOpen(false));
+  window.addEventListener("resize", () => window.innerWidth > 1100 && setOpen(false));
 }
 
 /* Scroll: header, progreso, botón flotante, parallax y línea de tiempo (un solo rAF) */
